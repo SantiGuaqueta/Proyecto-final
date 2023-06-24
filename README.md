@@ -102,21 +102,30 @@ def palabras(apt1,apt2,k,posiciones,matrizA,apt,lista): # Declaro mi segunda fun
                     for i in range(len(palabra)): # Realizo un bucle for donde recorrere el rango de la palabra osea desde 0 hasta la cantidad de caracteres que tenga la palabra
                         matrizA[apt1][apt2 + i] = palabra[i] # Como la palabra se va a introducir horizontalmente aumentare las columnas unicamente la fila sera la misma y alfinal imprimo la letra que ira en esa pocicion
                 else:
-                    print("Lo sentimos pero la palabra que quieres ingresar es demasiado grande y no es posible ingresarla")
-                    lista=lista.remove(palabra)
+                    print(f"\nLo sentimos pero la palabra {palabra} demasiado grande para la ubicacion que elegiste y no es posible ingresarla\n") # Escribo esto si la palabra no se puede agregar
+                    lista=lista.remove(palabra) # Y la remuevo de la lista que contendra las palabras que estan DENTRO de la sopa de letras
             else: # Este else es relacionado a la eleccion 2
                 if apt2 - len(palabra) <= columnas_A and apt2 - len(palabra) >= 0 : # De nuevo evaluo si la palabra se puede ingresar   
                     for i in range(len(palabra)): # Recorro desde 0 hasta la cantidad de letras o caracteres que tiene la palabra
                         matrizA[apt1][apt2 - i] = palabra[i] # En este caso como la palabra queremos que vaya de derecha a izquierda vamos a restar i a la cantidad de columnas dada
+                else:
+                    print(f"\nLo sentimos pero la palabra {palabra} demasiado grande para la ubicacion que elegiste y no es posible ingresarla\n") # Escribo esto si la palabra no se puede agregar
+                    lista=lista.remove(palabra) # Y la remuevo de la lista que contendra las palabras que estan DENTRO de la sopa de letras
         elif eleccion ==2: # Elif relazionado a la elleccion 1
             if eleccion2 == 1: # Realizo otra sentencia o condicional if el cual evalua cual fue la eleccion 2 elegida por el usuario
                 if apt1 +len(palabra) <= filas_A: # Esta condicion evalua si la palabra escrita tiene el tamaño requerido para ser ingresada a la sopa de letras en este caso como la palabra va a estar verticalmente evaluamos es en filas
                     for i in range(len(palabra)): # Realizo un bucle for donde recorrere el rango de la palabra osea desde 0 hasta la cantidad de caracteres que tenga la palabra
-                        matrizA[apt1 + i][apt2] = palabra[i] # Como la palabra se va a introducir verticalmente aumentare las filas unicamente la columna sera la misma y al final imprimo la letra que ira en esa pocicion
+                       matrizA[apt1 + i][apt2] = palabra[i] # Como la palabra se va a introducir verticalmente aumentare las filas unicamente la columna sera la misma y al final imprimo la letra que ira en esa pocicion
+                else:
+                    print(f"\nLo sentimos pero la palabra {palabra} demasiado grande para la ubicacion que elegiste y no es posible ingresarla\n") # Escribo esto si la palabra no se puede agregar
+                    lista=lista.remove(palabra) # Y la remuevo de la lista que contendra las palabras que estan DENTRO de la sopa de letras
             else: # Este else es relacionado a la eleccion 2
                 if apt1 - len(palabra) <= filas_A and apt1 - len(palabra) >= 0: # De nuevo evaluo si la palabra se puede ingresar
                     for i in range(len(palabra)): # Realizo un bucle for donde recorrere el rango de la palabra osea desde 0 hasta la cantidad de caracteres que tenga la palabra
                         matrizA[apt1 - i][apt2] = palabra[i] # En este caso como la palabra queremos que vaya de abajo hacia ariiba vamos a restar i a la cantidad de filas dada
+                else:
+                    print(f"\nLo sentimos pero la palabra {palabra} demasiado grande para la ubicacion que elegiste y no es posible ingresarla\n") # Escribo esto si la palabra no se puede agregar
+                    lista=lista.remove(palabra) # Y la remuevo de la lista que contendra las palabras que estan DENTRO de la sopa de letras
 
         else: # Este else es porque ya solo queda la opcion 3
             if eleccion2 ==1: # Condicional que evalua la eleccion 2 que eligio el usuario
@@ -124,11 +133,17 @@ def palabras(apt1,apt2,k,posiciones,matrizA,apt,lista): # Declaro mi segunda fun
                     if apt1 +len(palabra) <= filas_A: # evalua por segunda vez si la palabra se puede agregar
                         for i in range(len(palabra)): # Recorremos la cantidad de caracteres que tiene la palabra con ayuda de un for
                             matrizA[apt1 + i][apt2+ i] = palabra[i] # Como la palabra se va a introducir en diagonal vamos a ir sumando la cantidad de filas y columnas con el valor que tenga i
+                else:
+                    print(f"\nLo sentimos pero la palabra {palabra} demasiado grande para la ubicacion que elegiste y no es posible ingresarla\n") # Escribo esto si la palabra no se puede agregar
+                    lista=lista.remove(palabra) # Y la remuevo de la lista que contendra las palabras que estan DENTRO de la sopa de letras
             else:
                 if apt2 - len(palabra) <= columnas_A: # Evalua si la palabra se puede ingresar en la sopa de letras en el lugar escogido
                     if apt1 -len(palabra) <= filas_A: # Evalua por segunda vez si la palabra se puede agregar
                         for i in range(len(palabra)): # Recorremos la cantidad de caracteres que tiene la palabra con ayuda de un for
                             matrizA[apt1 - i][apt2- i] = palabra[i]  # Como la palabra se va a introducir en diagonal pero invertida vamos a ir restando la cantidad de filas y columnas con el valor que tenga i
+                else:
+                    print(f"\nLo sentimos pero la palabra {palabra} demasiado grande para la ubicacion que elegiste y no es posible ingresarla\n") # Escribo esto si la palabra no se puede agregar
+                    lista=lista.remove(palabra) # Y la remuevo de la lista que contendra las palabras que estan DENTRO de la sopa de letras
 if __name__ == "__main__":
     print(f"\n{jugador1} Introduce los valores por filas para la matriz. Recuerde que la cantidad de filas es igual a la cantidad de columnas.") # Recalco que la cantidad de filas es igual a la de columnas por lo cual no podra seleccionar la cantidad de columnas solo de filas
     # Creo la  matriz
