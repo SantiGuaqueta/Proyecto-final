@@ -18,5 +18,48 @@ De esta manera, se estableció un límite adecuado para el número de palabras a
 
 ### continuen uds como abordaron lo demas no metan code sino expliquen como vieron el problema y lo solucionaron
 
-## Codigo y diagrama de flujo
+## Codigo y diagramas de flujo
+### Primera parte
+``` python
+import random
+titulo="SOPA DE LETRAS PROGRASAURIA" # Declaro titulo
+print(titulo.center(150)) # Con un metodo de center dejo lo mas centrado el titulo 
+# Protocolo
+print("¡Bienvenidos a la emocionante aventura de la sopa de letras!")
+print("Adelante, atrévete a sumergirte en esta emocionante sopa de letras. Deja que tu pasión por las palabras te guíe a través de este desafío y que tu espíritu de aventura") 
+print("te lleve a descubrir todos los tesoros que se esconden entre las letras. Que disfrutes de esta experiencia llena de palabras y diversión! Bienvenido(a) a la maravillosa aventura de la sopa de letras prograsauria.")
+# Pido nombres
+jugador1=input("\nEscribe el nombre del primer jugador: ")
+jugador2=input("Escribe el nombre del segundo jugador: ")
+# Utilizo metodo capitalize para que solo la primera letra de los nombres quede en mayuscula y el resto en minuscula como es un sopa de letras prehistorica nosotros respetamos que los nombres inicien en mayuscula y el resto en minuscula
+jugador1=jugador1.capitalize() 
+jugador2=jugador2.capitalize()
+print(f"\nHola {jugador1}  tu seras el que creara la sopa de letras para que {jugador2} pueda resolverla")
+def Crear_Matriz(filas_A,columnas_A): # Declaro mi primera funcion la cual se utilizara para crear la sopa de letras.
+    matriz=[] # Dejare esta lista de nombre matriz vacia.
+    for i in range (0,filas_A): # Declaro que para i en el rango de 0 hasta las filas que halla puesto el lector realice lo siguiente.
+        fila= [] # Ingreso otra variable vacia
+        for j in range(0, columnas_A): # Ahora declaro que para j en el rango de 0, hasta columnas realice lo siguiente.
+            valor= chr(random.randint(100,120)) # relleno con valores aleatorios esto gracias al metodo random que importamos
+            fila. append(valor) # el anterior entero se adiciona a la lista vacia llamada fila que declaramos antes. 
+        matriz.append(fila) # Ahora pido que la fila se adicione a la matriz vacia antes declarada.
+    return(matriz) # Pido que retorne matriz
 
+if __name__ == "__main__":
+    print(f"\n{jugador1} Introduce los valores por filas para la matriz. Recuerde que la cantidad de filas es igual a la cantidad de columnas.") # Recalco que la cantidad de filas es igual a la de columnas por lo cual no podra seleccionar la cantidad de columnas solo de filas
+    # Creo la  matriz
+    print("El valor minimo de las filas es 10 y el valor maximo 30") # Recalco la aclaracion y condicion que tiene el programa
+    filas_A = int(input("Especifique el numero de filas de la primera matriz: ")) # Pido cantidad de filas
+    while filas_A < 10 or filas_A >= 30: # Un ciclo donde el programa analiza si el usuario realizo caso a la cantidad de filas min y max
+        print("Error como te comentamos antes el valor de filas debe ser minimo 10 y maximo 30") # Como no hizo caso le recalca su error
+        filas_A=int(input("Especifique el numero de filas de la primera matriz: ")) # Y pide de nuevo la cantidad de filas. El bucle se repite hasta que las filas no cumplan la condicion del while
+    columnas_A = filas_A # No doy opcion a elegir columnas en este momento digo que columnas igual a filas
+    matrizA = Crear_Matriz(filas_A,columnas_A) # Llamo a la funcion crear matriz
+    #for i in range (0,filas_A): 
+        # print(matrizA[i])  imprimo la matriz
+```
+En esta sección inicial del código, se establece el protocolo del juego y se define la primera función. En el protocolo, se crea una variable llamada "titulo" que almacena el título del juego, "SOPA DE LETRAS PROGRASAURIA". Luego, se imprime el título centrado utilizando el método center(150) para asegurar su presentación estética. A continuación, se utilizan varios comandos print para dar una breve introducción al juego, explicando que se trata de encontrar palabras ocultas en una sopa de letras y solicitando los nombres de los dos jugadores. Para garantizar la falta de errores de portografia de los nombres, se utiliza el método capitalize() en los nombres ingresados mediante la función input(). Este método convierte la primera letra de cada nombre en mayúscula y el resto en minúscula.Con esto, se completa el protocolo del juego y se procede a la definición de la primera función.
+
+Antes de hablar de la matriz, es importante mencionar la importancia del comando import random. Este comando permite utilizar la funcionalidad de la biblioteca o módulo "random" en Python. La biblioteca random proporciona una serie de funciones para generar números o letras aleatorias, lo cual es útil en diversos escenarios, incluyendo la generación de valores aleatorios para juegos, selección aleatoria de elementos de una lista, entre otros.
+
+En esta función, se comienza solicitando al usuario que ingrese la cantidad de filas para la matriz utilizando la función input(). Se verifica que la cantidad de filas esté en el rango válido de 10 a 30 mediante un ciclo while. Si la condición no se cumple, se muestra un mensaje de error y se solicita nuevamente al usuario que ingrese la cantidad de filas. Una vez validada la cantidad de filas, se establece que la cantidad de columnas sea igual a la cantidad de filas. Luego, se crea una lista vacía llamada matriz, que se utilizará para almacenar las letras. A continuación, se utiliza un bucle for para recorrer las filas de la matriz. Dentro de este bucle, se declara una lista vacía llamada fila. Luego, se utiliza otro bucle for para recorrer las columnas de la matriz. Dentro de este segundo bucle, se genera una letra aleatoria utilizando la función chr(random.randint(100,120)). La letra generada se agrega a la lista fila, y luego esta lista se agrega a la lista matriz. De esta forma, se completa la creación de la matriz de letras. Es importante tener en cuenta que, hasta este punto, la matriz no se ha impreso. 
