@@ -63,9 +63,12 @@ En esta sección inicial del código, se establece el protocolo del juego y se d
 Antes de hablar de la matriz, es importante mencionar la importancia del comando import random. Este comando permite utilizar la funcionalidad de la biblioteca o módulo "random" en Python. La biblioteca random proporciona una serie de funciones para generar números o letras aleatorias, lo cual es útil en diversos escenarios, incluyendo la generación de valores aleatorios para juegos, selección aleatoria de elementos de una lista, entre otros.
 
 En esta función, se comienza solicitando al usuario que ingrese la cantidad de filas para la matriz utilizando la función input(). Se verifica que la cantidad de filas esté en el rango válido de 10 a 30 mediante un ciclo while. Si la condición no se cumple, se muestra un mensaje de error y se solicita nuevamente al usuario que ingrese la cantidad de filas. Una vez validada la cantidad de filas, se establece que la cantidad de columnas sea igual a la cantidad de filas. Luego, se crea una lista vacía llamada matriz, que se utilizará para almacenar las letras. A continuación, se utiliza un bucle for para recorrer las filas de la matriz. Dentro de este bucle, se declara una lista vacía llamada fila. Luego, se utiliza otro bucle for para recorrer las columnas de la matriz. Dentro de este segundo bucle, se genera una letra aleatoria utilizando la función chr(random.randint(100,120)). La letra generada se agrega a la lista fila, y luego esta lista se agrega a la lista matriz. De esta forma, se completa la creación de la matriz de letras. Es importante tener en cuenta que, hasta este punto, la matriz no se ha impreso.
-## Diagramas
 
-## Segunda parte 
+
+[![Diagrama-sin-t-tulo-drawio-10.png](https://i.postimg.cc/3xp720V0/Diagrama-sin-t-tulo-drawio-10.png)](https://postimg.cc/k2nkmGn7)
+
+
+### Segunda parte 
 ``` python
 def palabras(apt1,apt2,k,posiciones,matrizA,apt,lista): # Declaro mi segunda funcion la cual se utilizara para rellenar la sopa de letras.
    
@@ -177,3 +180,17 @@ if __name__ == "__main__":
     print(f"{jugador2}, {jugador1} ya realizo su sopa de letra ahora es tu turno de resolverla, las palabras que tendras que buscar son las siguientes: ") 
     print("Lista de palabras: \n"+str(lista)) # Imprimo la lista con las palabras a buscar utilizo un salto de linea entre el titulo y las palabras
 ```
+La segunda función de nuestro código se encarga de agregar palabras a la sopa de letras. Antes de explicar la función en detalle, es necesario mencionar las variables que se utilizarán. Primero, tenemos la variable k, que se obtiene mediante un input y representa la cantidad de palabras a agregar. Esta cantidad debe cumplir ciertas condiciones: como máximo, se pueden agregar la mitad de la cantidad de filas, y como mínimo, debe ser 1. Para asegurar que se cumplan estas condiciones, se utiliza un bucle while que verifica y solicita nuevamente la cantidad de palabras en caso de que no cumpla con los requisitos. Además, se definen las variables apt1, apt2 y apt, que se utilizarán más adelante en la función. También se crea una variable llamada posiciones, que funcionará como contador, y una lista vacía que se utilizará más adelante.
+
+Ahora, en relación a la función en sí, se emplea un bucle while cuya condición es que el contador posiciones sea menor que la cantidad de palabras k. Dentro de este bucle, se realiza lo siguiente:
+
+1. Se incrementa el contador posiciones y apt.
+2. Se solicita al usuario que ingrese una palabra. A esta palabra se le aplican los métodos lower() y strip() para convertirla a minúsculas y eliminar los espacios al inicio y al final de la palabra.
+3. Se le pide al usuario que elija la posición de la palabra: 1 para horizontal, 2 para vertical o 3 para diagonal. En caso de que se elija una opción no válida (4), se muestra un mensaje de error y se solicita nuevamente la elección.
+4. Se le pide al usuario que elija la dirección de la palabra: 1 para normal o 2 para invertida. Nuevamente, si se elige una opción no válida (4), se muestra un mensaje de error y se solicita nuevamente la elección.
+5. Se solicitan las coordenadas de la palabra, que se almacenarán en las variables apt1 (fila) y apt2 (columna). Si el número ingresado es mayor que la cantidad de filas, se solicita nuevamente la fila. Lo mismo ocurre con la columna.
+6. En esta parte del código, encontramos condicionales múltiples y condicionales anidados. Dependiendo de la opción elegida por el usuario en la elección 1, el programa buscará en los condicionales múltiples una coincidencia con eleccion1 == 1, eleccion1 == 2 o eleccion1 == 3. Una vez que se cumple una de estas condiciones, se evalúa la opción elegida en la elección 2, ya sea 1 o 2.
+7. Después de determinar las opciones elegidas por el usuario, el programa realiza una serie de evaluaciones para determinar si la palabra puede ser agregada. Existen varios factores que pueden impedir que una palabra sea agregada, como su longitud o la posición en la que se desea colocar. El análisis específico varía según la posición elegida. En resumen, se verifica si apt (1 o 2, dependiendo de si es horizontal, vertical o diagonal), signo (positivo o negativo, dependiendo de si es normal o invertida) y la longitud de la palabra (len(palabra)) son menores que las dimensiones de la matriz (filas_A o columnas_A). Si la palabra no puede ser agregada, se muestra un mensaje indicando que no se pudo agregar y se elimina de la lista que contiene las palabras de la sopa de letras. En caso contrario, el programa pasa al siguiente paso.
+8. Se utiliza un bucle for para recorrer la cantidad de letras de la palabra. La iteración se realiza de la siguiente manera: for i in range(len(palabra)). Esto significa que i toma valores desde 0 hasta la cantidad de letras de la palabra. Luego, se accede a la matriz creada anteriormente y se le asigna la posición de fila y columna correspondiente. Dependiendo de la posición, se suma apt1 con i, apt2 con i o ambos con i. Esto se realiza para indicar en qué ubicación se colocará cada letra de la palabra. La asignación se realiza con matrizA[apt1][apt2 + i] = palabra[i], lo cual significa que la letra en la posición i de la palabra se asigna a la posición correspondiente en la matriz.
+9. Este proceso se repite hasta que se hayan agregado todas las palabras. Luego, se imprime la matriz y, finalmente, se muestra la lista de palabras que se agregaron.
+
