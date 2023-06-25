@@ -65,7 +65,7 @@ Antes de hablar de la matriz, es importante mencionar la importancia del comando
 En esta función, se comienza solicitando al usuario que ingrese la cantidad de filas para la matriz utilizando la función input(). Se verifica que la cantidad de filas esté en el rango válido de 10 a 30 mediante un ciclo while. Si la condición no se cumple, se muestra un mensaje de error y se solicita nuevamente al usuario que ingrese la cantidad de filas. Una vez validada la cantidad de filas, se establece que la cantidad de columnas sea igual a la cantidad de filas. Luego, se crea una lista vacía llamada matriz, que se utilizará para almacenar las letras. A continuación, se utiliza un bucle for para recorrer las filas de la matriz. Dentro de este bucle, se declara una lista vacía llamada fila. Luego, se utiliza otro bucle for para recorrer las columnas de la matriz. Dentro de este segundo bucle, se genera una letra aleatoria utilizando la función chr(random.randint(100,120)). La letra generada se agrega a la lista fila, y luego esta lista se agrega a la lista matriz. De esta forma, se completa la creación de la matriz de letras. Es importante tener en cuenta que, hasta este punto, la matriz no se ha impreso.
 
 
-[![Diagrama-sin-t-tulo-drawio-10.png](https://i.postimg.cc/3xp720V0/Diagrama-sin-t-tulo-drawio-10.png)](https://postimg.cc/k2nkmGn7)
+[![Diagrama-sin-t-tulo-drawio-11.png](https://i.postimg.cc/g2YFLtVQ/Diagrama-sin-t-tulo-drawio-11.png)](https://postimg.cc/kBhhkchv)
 
 
 ### Segunda parte 
