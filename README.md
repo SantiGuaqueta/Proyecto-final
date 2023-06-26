@@ -1,5 +1,8 @@
 # Proyecto-final 
-Bienvenidos a este repositorio donde presentaremos el desarrollo del proyecto de programación propuesto por nuestro profesor Felipe González Roldán. Antes de comenzar, es importante recalcar que el proyecto que presentaremos a continuación consiste en una sopa de letras programada en Python, donde aplicamos la mayoría de los temas que hemos visto en clase el día de hoy. Sin más preámbulos, ¡comencemos!
+Bienvenidos a este repositorio donde presentaremos el desarrollo del proyecto de programación propuesto por nuestro profesor Felipe González Roldán. Antes de comenzar, es importante recalcar que el proyecto que presentaremos a continuación consiste en una sopa de letras programada en Python, donde aplicamos la mayoría de los temas que hemos visto en clase el día de hoy y el grupo esta conformado por Gabriella Ballesteros Bravo, Santiago Nicolas Linares Gonzales y Santiago Stiven Guaqueta Poveda. Sin más preámbulos, ¡comencemos!
+
+[![Captura-de-pantalla-2023-06-25-195422.png](https://i.postimg.cc/gjY4WHMh/Captura-de-pantalla-2023-06-25-195422.png)](https://postimg.cc/DJM1QL3f)
+
 ## ¿Como se abordo?
 
 En este proyecto, abordamos la creación de una sopa de letras siguiendo los siguientes pasos. En primer lugar, planteamos la necesidad de crear una matriz que almacenara todas las letras. Esta matriz debía cumplir ciertas características, como tener un tamaño mínimo de 10x10 y un máximo de 30x30. Tras analizar esta consideración, tomamos la decisión de crear una matriz cuadrada, donde el número de filas sea igual al número de columnas.
