@@ -70,6 +70,7 @@ En esta función, se comienza solicitando al usuario que ingrese la cantidad de 
 
 ### Segunda parte 
 ``` python
+import getpass
 def palabras(apt1,apt2,k,posiciones,matrizA,apt,lista): # Declaro mi segunda funcion la cual se utilizara para rellenar la sopa de letras.
    
     while posiciones < k: # Realizo un bucle el cual sirve para contabilizar la cantidad de calabras que quiero agregar
@@ -79,25 +80,25 @@ def palabras(apt1,apt2,k,posiciones,matrizA,apt,lista): # Declaro mi segunda fun
         palabra=palabra.lower() # Aplicamos metodo lower por si nos dan la palabra en mayuscula
         palabra=palabra.strip()  # Aplicamos metodo strip por si el usuario ingresa espacios al final o al inicio de la palabra
         lista.append(palabra) # Añadimos la palabra ingresada a una lista que se usara mas adelante
-        eleccion=int(input("Dirección de la palabra (1: horizontal, 2: vertical, 3: diagonal): ")) # Declaramos la primera eleccion la cual nos sirve para que el usuario nos indique la posicion de la palabra
-        while eleccion > 3:
+        eleccion=int(getpass.getpass("Dirección de la palabra (1: horizontal, 2: vertical, 3: diagonal): ")) # Declaramos la primera eleccion la cual nos sirve para que el usuario nos indique la posicion de la palabra
+        while eleccion > 3: # Ciclos que agregamos por si no se cumple la condicion
                 print("La opcion que elegiste en la direccion de palabra no se encuentra por favor no cometer este mismo error de nuevo")
-                eleccion=int(input("Dirección de la palabra (1: horizontal, 2: vertical, 3: diagonal): "))
+                eleccion=int(getpass.getpass("Dirección de la palabra (1: horizontal, 2: vertical, 3: diagonal): ")) # Volvemos a pedir la eleccion
         
-        eleccion2=int(input("Dirección 2 de la palabra (1: De izquierda a derecha o de arriba hacia abajo, 2: De derecha a izquirda o de abajo hacia arriba):"))# Declaramos segunda eleccion que nos dira como quiere que se posicione la palabra
-        while eleccion2 > 2:
+        eleccion2=int(getpass.getpass("Dirección 2 de la palabra (1: De izquierda a derecha o de arriba hacia abajo, 2: De derecha a izquierda o de abajo hacia arriba):"))# Declaramos segunda eleccion que nos dira como quiere que se posicione la palabra
+        while eleccion2 > 2: # Ciclos que agregamos por si no se cumple la condicion
                 print("La opcion que elegiste en la direccion 2 de palabra no se encuentra por favor no cometer este mismo error de nuevo")
-                eleccion2=int(input("Dirección 2 de la palabra (1: De izquierda a derecha o de arriba hacia abajo, 2: De derecha a izquirda o de abajo hacia arriba):"))
+                eleccion2=int(getpass.getpass("Dirección 2 de la palabra (1: De izquierda a derecha o de arriba hacia abajo, 2: De derecha a izquierda o de abajo hacia arriba):"))# Volvemos a pedir la eleccion
         
-        apt1=int(input("Escriba en que fila quiere que se encuentre la palabra: ")) # Preguntamos al usuario en que fila quiere la palabra esta fila es fila inicial
-        while apt1 > filas_A:
+        apt1=int(getpass.getpass("Escriba en que fila quiere que se encuentre la palabra: ")) # Preguntamos al usuario en que fila quiere la palabra esta fila es fila inicial
+        while apt1 > filas_A: # Ciclos que agregamos por si no se cumple la condicion
             print("Esta fila no se encuentra disponible en el tamaño que pusiste")
-            apt1=int(input("Escriba en que fila quiere que se encuentre la palabra: "))
+            apt1=int(getpass.getpass("Escriba en que fila quiere que se encuentre la palabra: "))# Volvemos a pedir la eleccion
         apt1-= 1
-        apt2=int(input("Escriba en que columna quiere que se encuentre la palabra: ")) # Preguntamos al usuario en que columna quiere la palabra esta columna es columna inicial 
-        while apt2 > columnas_A:
+        apt2=int(getpass.getpass("Escriba en que columna quiere que se encuentre la palabra: ")) # Preguntamos al usuario en que columna quiere la palabra esta columna es columna inicial 
+        while apt2 > columnas_A: # Ciclos que agregamos por si no se cumple la condicion
             print("Esta columna no se encuentra disponible en el tamaño que pusiste")
-            apt2=int(input("Escriba en que columna quiere que se encuentre la palabra: "))
+            apt2=int(getpass.getpass("Escriba en que columna quiere que se encuentre la palabra: "))# Volvemos a pedir la eleccion
         apt2-= 1
         if eleccion == 1: # realizo una sentencia o condicional if el cual evalua cual fue la eleccion 1 elegida por el usiario 
             if eleccion2==1: # Realizo otra sentencia o condicional if el cual evalua cual fue la eleccion 2 elegida por el usuario
@@ -179,18 +180,26 @@ if __name__ == "__main__":
 
     print(f"{jugador2}, {jugador1} ya realizo su sopa de letra ahora es tu turno de resolverla, las palabras que tendras que buscar son las siguientes: ") 
     print("Lista de palabras: \n"+str(lista)) # Imprimo la lista con las palabras a buscar utilizo un salto de linea entre el titulo y las palabras
+
 ```
+Modulo getpass: Muchos programas que interactúan con el usuario a través de la terminal necesitan preguntar al usuario valores de contraseña sin mostrar lo que escribe el usuario la pantalla. El módulo getpass proporciona una forma portátil de manejar tales solicitudes de contraseña de forma segura.
+
 La segunda función de nuestro código se encarga de agregar palabras a la sopa de letras. Antes de explicar la función en detalle, es necesario mencionar las variables que se utilizarán. Primero, tenemos la variable k, que se obtiene mediante un input y representa la cantidad de palabras a agregar. Esta cantidad debe cumplir ciertas condiciones: como máximo, se pueden agregar la mitad de la cantidad de filas, y como mínimo, debe ser 1. Para asegurar que se cumplan estas condiciones, se utiliza un bucle while que verifica y solicita nuevamente la cantidad de palabras en caso de que no cumpla con los requisitos. Además, se definen las variables apt1, apt2 y apt, que se utilizarán más adelante en la función. También se crea una variable llamada posiciones, que funcionará como contador, y una lista vacía que se utilizará más adelante.
 
 Ahora, en relación a la función en sí, se emplea un bucle while cuya condición es que el contador posiciones sea menor que la cantidad de palabras k. Dentro de este bucle, se realiza lo siguiente:
 
 1. Se incrementa el contador posiciones y apt.
 2. Se solicita al usuario que ingrese una palabra. A esta palabra se le aplican los métodos lower() y strip() para convertirla a minúsculas y eliminar los espacios al inicio y al final de la palabra.
-3. Se le pide al usuario que elija la posición de la palabra: 1 para horizontal, 2 para vertical o 3 para diagonal. En caso de que se elija una opción no válida (4), se muestra un mensaje de error y se solicita nuevamente la elección.
-4. Se le pide al usuario que elija la dirección de la palabra: 1 para normal o 2 para invertida. Nuevamente, si se elige una opción no válida (4), se muestra un mensaje de error y se solicita nuevamente la elección.
-5. Se solicitan las coordenadas de la palabra, que se almacenarán en las variables apt1 (fila) y apt2 (columna). Si el número ingresado es mayor que la cantidad de filas, se solicita nuevamente la fila. Lo mismo ocurre con la columna.
+3. Se le pide al usuario que elija la posición de la palabra: 1 para horizontal, 2 para vertical o 3 para diagonal. En caso de que se elija una opción no válida (4), se muestra un mensaje de error y se solicita nuevamente la elección. Aqui utilizamos el getpass para que al imprimir no se vea la opcion que se eligio y evitar trampas.
+4. Se le pide al usuario que elija la dirección de la palabra: 1 para normal o 2 para invertida. Nuevamente, si se elige una opción no válida (4), se muestra un mensaje de error y se solicita nuevamente la elección. Aqui utilizamos el getpass para que al imprimir no se vea la opcion que se eligio y evitar trampas.
+5. Se solicitan las coordenadas de la palabra, que se almacenarán en las variables apt1 (fila) y apt2 (columna). Si el número ingresado es mayor que la cantidad de filas, se solicita nuevamente la fila. Lo mismo ocurre con la columna. Aqui utilizamos el getpass para que al imprimir no se vea la opcion que se eligio y evitar trampas.
 6. En esta parte del código, encontramos condicionales múltiples y condicionales anidados. Dependiendo de la opción elegida por el usuario en la elección 1, el programa buscará en los condicionales múltiples una coincidencia con eleccion1 == 1, eleccion1 == 2 o eleccion1 == 3. Una vez que se cumple una de estas condiciones, se evalúa la opción elegida en la elección 2, ya sea 1 o 2.
 7. Después de determinar las opciones elegidas por el usuario, el programa realiza una serie de evaluaciones para determinar si la palabra puede ser agregada. Existen varios factores que pueden impedir que una palabra sea agregada, como su longitud o la posición en la que se desea colocar. El análisis específico varía según la posición elegida. En resumen, se verifica si apt (1 o 2, dependiendo de si es horizontal, vertical o diagonal), signo (positivo o negativo, dependiendo de si es normal o invertida) y la longitud de la palabra (len(palabra)) son menores que las dimensiones de la matriz (filas_A o columnas_A). Si la palabra no puede ser agregada, se muestra un mensaje indicando que no se pudo agregar y se elimina de la lista que contiene las palabras de la sopa de letras. En caso contrario, el programa pasa al siguiente paso.
 8. Se utiliza un bucle for para recorrer la cantidad de letras de la palabra. La iteración se realiza de la siguiente manera: for i in range(len(palabra)). Esto significa que i toma valores desde 0 hasta la cantidad de letras de la palabra. Luego, se accede a la matriz creada anteriormente y se le asigna la posición de fila y columna correspondiente. Dependiendo de la posición, se suma apt1 con i, apt2 con i o ambos con i. Esto se realiza para indicar en qué ubicación se colocará cada letra de la palabra. La asignación se realiza con matrizA[apt1][apt2 + i] = palabra[i], lo cual significa que la letra en la posición i de la palabra se asigna a la posición correspondiente en la matriz.
 9. Este proceso se repite hasta que se hayan agregado todas las palabras. Luego, se imprime la matriz y, finalmente, se muestra la lista de palabras que se agregaron.
+
+
+[![Diagrama-sin-t-tulo-drawio-13.png](https://i.postimg.cc/nhfnZs4k/Diagrama-sin-t-tulo-drawio-13.png)](https://postimg.cc/Tp0zJ3HL)
+
+
 
