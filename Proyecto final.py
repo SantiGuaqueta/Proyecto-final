@@ -185,6 +185,7 @@ if __name__ == "__main__":
     print(f"{jugador2}, {jugador1} ya realizo su sopa de letra ahora es tu turno de resolverla") 
 
 # Obtener la palabra a buscar del usuario
+    puntos=1 # Variable que servira para el puntaje
     for q in range(1,k+1):
      palabra_usuario = input("Ingresa la palabra a buscar: ")
 
@@ -194,6 +195,23 @@ if __name__ == "__main__":
      encontrada = buscar_palabra(matriz, palabra_usuario) #llamamos la funcion para buscar la palabra
      if encontrada: #creamos condicional para que imprima texto segun si encontro la palabra en la sopa
       print("La palabra se encontró en la sopa de letras.")
+      puntos +=1 # Les sumamos 1 punto si acerto
      else:
       print("La palabra no se encontró en la sopa de letras.")
-    print("genial "+str(jugador2)+" haz completado la sopa de letras")
+      puntos -=1 # Les restamos 1 punto si no acerto
+    # Agrego con condicionales todos los casos posibles y dependiendo del numero que tenga la variable numeros la evaluo con la variable k y depende de la condicion que se cumpla el puntaje obtenido sera diferente
+    if puntos == k:
+        print("\nGenial "+str(jugador2)+" haz completado la sopa de letras")
+        print(f"{jugador2} tu  puntuacion es = 100")
+    elif puntos > k/2 and puntos < k:
+        print("\nSuerte a la proxima "+str(jugador2)+" no lograste compeltar la sopa de letras en su totalidad")
+        print(f"{jugador2} tu puntuacion es = 70")
+    elif puntos == k//2:
+        print("\nSuerte a la proxima "+str(jugador2)+" no lograste compeltar la sopa de letras en su totalidad")
+        print(f"{jugador2} tu puntuacion es = 50")
+    elif puntos < k/2 and puntos >= 0 :
+        print("\nSuerte a la proxima "+str(jugador2)+" no lograste compeltar la sopa de letras en su totalidad")
+        print(f"{jugador2} tu puntuacion es = 30")
+    elif puntos < 0:
+        print("\nQue mal "+str(jugador2)+" no encontraste ni una palabra de la sopa de letras")
+        print(f"{jugador2} tu puntuacion es = 0")
