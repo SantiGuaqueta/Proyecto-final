@@ -187,6 +187,7 @@ if __name__ == "__main__":
 # Obtener la palabra a buscar del usuario
     puntos=1 # Variable que servira para el puntaje
     for q in range(1,k+1):
+     print("\nSi la palabra se encuentra invertida escriba la palabra invertida ej: si la palabra es 'hola' y esta invertida al ingresar la palabra ingresela como 'aloh'") # Aclaracion importante
      palabra_usuario = input("Ingresa la palabra a buscar: ")
 
      matriz=[] #se crea matriz vacia 
@@ -200,7 +201,7 @@ if __name__ == "__main__":
       print("La palabra no se encontró en la sopa de letras.")
       puntos -=1 # Les restamos 1 punto si no acerto
     # Agrego con condicionales todos los casos posibles y dependiendo del numero que tenga la variable numeros la evaluo con la variable k y depende de la condicion que se cumpla el puntaje obtenido sera diferente
-    if puntos == k:
+    if puntos >= k:
         print("\nGenial "+str(jugador2)+" haz completado la sopa de letras")
         print(f"{jugador2} tu  puntuacion es = 100")
     elif puntos > k/2 and puntos < k:
