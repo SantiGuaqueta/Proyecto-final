@@ -5,7 +5,8 @@ Bienvenidos a este repositorio donde presentaremos el desarrollo del proyecto de
 
 ## ¿Como se abordo?
 
-En este proyecto, abordamos la creación de una sopa de letras siguiendo los siguientes pasos. En primer lugar, planteamos la necesidad de crear una matriz que almacenara todas las letras. Esta matriz debía cumplir ciertas características, como tener un tamaño mínimo de 10x10 y un máximo de 30x30. Tras analizar esta consideración, tomamos la decisión de crear una matriz cuadrada, donde el número de filas sea igual al número de columnas.
+En este proyecto, abordamos la creación de una sopa de letras siguiendo los siguientes pasos.
+En primer lugar, planteamos la necesidad de crear una matriz que almacenara todas las letras. Esta matriz debía cumplir ciertas características, como tener un tamaño mínimo de 10x10 y un máximo de 30x30. Tras analizar esta consideración, tomamos la decisión de crear una matriz cuadrada, donde el número de filas sea igual al número de columnas.
 El segundo aspecto que abordamos en este proyecto fue cómo introducir las letras en la sopa de letras. Para resolver este problema, planteamos el uso de dos punteros, uno para la fila y otro para la columna, como se muestra en la imagen 1. 
 
 [![Captura-de-pantalla-2023-06-23-211020.png](https://i.postimg.cc/m2vthRvZ/Captura-de-pantalla-2023-06-23-211020.png)](https://postimg.cc/kBynprML) [![Captura-de-pantalla-2023-06-23-211446.png](https://i.postimg.cc/2j4zTvMY/Captura-de-pantalla-2023-06-23-211446.png)](https://postimg.cc/pyLbL9Pc)
@@ -19,7 +20,7 @@ Inicialmente, nos enfocamos en introducir las palabras en posición horizontal. 
 El tercer aspecto abordado en este proyecto fue la cantidad de palabras a agregar a la sopa de letras. Con el fin de facilitar y hacerlo más práctico, decidimos establecer un límite máximo de palabras, que sería la mitad de las filas elegidas. El mínimo de palabras permitidas sería 1. En caso de que se eligiera un valor distinto, se mostraría un error y se ofrecería la opción de volver a elegir la cantidad de palabras. Si se seleccionaba la cantidad máxima de palabras, se implementó un contador y un bucle para agregar las palabras a la sopa de letras y a una lista que vería el segundo jugador para completar la sopa de letras.
 De esta manera, se estableció un límite adecuado para el número de palabras a agregar, asegurando una experiencia óptima en la resolución de la sopa de letras.
 
-y finalmente el ultimo aspecto abordado fue el responder la sopa de letras con el jugador 2, para esto se recorrieron las filas de la matriz generada(la sopa de letras) y se evaluo todas la cordenadas en todas las direcciones para ver las letras que coincidian con la palabra digitada por el jugador uno, esto de principio a fin, en donde si coincidia se iba a mostrar un mensaje diciendo que se ha encontrado la palabra y si no coincidia con ninguna palabra mostraba un mensaje diciendo que no se ha encontrado, al acabar la palabras se mostraba un mensaje de finalizacion de la sopa de letras 
+Y finalmente el último aspecto abordado fue el responder la sopa de letras con el jugador 2, para esto se recorrieron las filas de la matriz generada(la sopa de letras) y se evaluo todas la cordenadas en todas las direcciones para ver las letras que coincidian con la palabra digitada por el jugador uno, esto de principio a fin, en donde si coincidia se iba a mostrar un mensaje diciendo que se ha encontrado la palabra y si no coincidia con ninguna palabra mostraba un mensaje diciendo que no se ha encontrado, al acabar la palabras se mostraba un mensaje de finalizacion de la sopa de letras 
 
 ## Codigo y diagramas de flujo
 ### Primera parte
