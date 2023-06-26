@@ -253,7 +253,7 @@ def buscar_palabra(matriz, palabra):
                     # Si se encontró la palabra, devolver True
                     if encontrado:
                         return True
-
+  puntos = 1 # Variable que servira para el puntaje
   for q in range(1,k+1):
      palabra_usuario = input("Ingresa la palabra a buscar: ")
 
@@ -263,9 +263,27 @@ def buscar_palabra(matriz, palabra):
      encontrada = buscar_palabra(matriz, palabra_usuario) #llamamos la funcion para buscar la palabra
      if encontrada: #creamos condicional para que imprima texto segun si encontro la palabra en la sopa
       print("La palabra se encontró en la sopa de letras.")
+      puntos +=1  # Le sumamos 1 punto si acerto 
      else:
       print("La palabra no se encontró en la sopa de letras.")
-     print("genial "+str(jugador1)+" haz completado la sopa de letras")
+      puntos +=1    # Le restamos 1 punto si acerto
+     
+      # Agrego con condicionales todos los casos posibles y dependiendo del numero que tenga la variable numeros la evaluo con la variable k y depende de la condicion que se cumpla el puntaje obtenido sera diferente
+    if puntos == k:
+        print("\nGenial "+str(jugador2)+" haz completado la sopa de letras")
+        print(f"{jugador2} tu  puntuacion es = 100")
+    elif puntos > k/2 and puntos < k:
+        print("\nSuerte a la proxima "+str(jugador2)+" no lograste compeltar la sopa de letras en su totalidad")
+        print(f"{jugador2} tu puntuacion es = 70")
+    elif puntos == k//2:
+        print("\nSuerte a la proxima "+str(jugador2)+" no lograste compeltar la sopa de letras en su totalidad")
+        print(f"{jugador2} tu puntuacion es = 50")
+    elif puntos < k/2 and puntos >= 0 :
+        print("\nSuerte a la proxima "+str(jugador2)+" no lograste compeltar la sopa de letras en su totalidad")
+        print(f"{jugador2} tu puntuacion es = 30")
+    elif puntos < 0:
+        print("\nQue mal "+str(jugador2)+" no encontraste ni una palabra de la sopa de letras")
+        print(f"{jugador2} tu puntuacion es = 0")
 ```
 Se obtiene el número de filas y columnas de la matriz utilizando las funciones len(matriz) y len(matriz[0]), también se obtiene la longitud de la palabra a buscar utilizando len(palabra). Esto es necesario para establecer los límites de búsqueda en cada dirección. luego se convierte la palabra a minúsculas utilizando palabra.lower(). Esto se hace para realizar una búsqueda insensible a mayúsculas, es decir, no importa si la palabra está escrita en mayúsculas o minúsculas en la matriz. Después, se definen las direcciones posibles: horizontal, vertical, diagonal superior y diagonal inferior. Cada dirección se representa como una tupla de dos elementos, donde el primer elemento indica el desplazamiento en las filas y el segundo elemento indica el desplazamiento en las columnas. despues se itera sobre todas las posiciones posibles en la matriz, primero, se recorren todas las filas y luego todas las columnas. Dentro de cada iteración se recorren todas las direcciones posibles y tambien dentro de cada iteración, se calcula la posición de la última letra de la palabra en la dirección actual utilizando la fórmula ``` ultimo_fila = fila + (longitud - 1) * dx y ultimo_columna = columna + (longitud - 1) * dy.``` Estos valores se utilizan para verificar si las coordenadas están dentro de los límites de la matriz. Si las coordenadas están dentro de los límites, se procede a verificar si la palabra se encuentra en la dirección actual. Se itera sobre cada letra de la palabra y se verifica si la letra actual en la matriz coincide con la letra de la palabra en la misma posición. Si en algún momento las letras no coinciden, se establece la variable encontrado como False y se interrumpe el ciclo. Si se encuentra la palabra, se devuelve True y se finaliza la función. En caso contrario, si se recorren todas las posiciones posibles en la matriz y no se encuentra la palabra, se solicita al usuario ingresar la palabra a buscar mediante input("Ingresa la palabra a buscar: "). Luego se crea una nueva matriz vacía llamada matriz y se copian todas las filas de la matriz original a esta nueva matriz. finalmente se llama a la función buscar_palabra pasando la nueva matriz y la palabra ingresada por el usuario. Si la palabra se encuentra en la sopa de letras, se imprime "La palabra se encontró en la sopa de letras.". si no, se imprime "La palabra no se encontró en la sopa de letras.".
 ```mermaid
