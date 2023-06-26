@@ -255,6 +255,7 @@ def buscar_palabra(matriz, palabra):
                         return True
   puntos = 1 # Variable que servira para el puntaje
   for q in range(1,k+1):
+     print("\nSi la palabra se encuentra invertida escriba la palabra invertida ej: si la palabra es 'hola' y esta invertida al ingresar la palabra ingresela como 'aloh'") # Aclaracion importante
      palabra_usuario = input("Ingresa la palabra a buscar: ")
 
      matriz=[] #se crea matriz vacia 
@@ -313,6 +314,11 @@ graph TD;
   S --> T[Retornar falso];
   T --> U[Fin];
 ```
-    
+## Fin
+En conclusión, mediante el uso de estructuras de control, ciclos y validaciones, hemos logrado implementar un programa que genera una sopa de letras personalizada, brindando una experiencia única y desafiante. Esta aplicación no solo permite a los usuarios disfrutar del juego de buscar palabras, sino también personalizarlo según sus preferencias. La combinación de la creatividad del usuario y la aleatoriedad de las letras generadas garantiza una experiencia de juego única en cada ejecución.
+
+La implementación de este proyecto nos ha permitido aprender y aplicar conceptos fundamentales de programación, como el manejo de estructuras de datos, el uso de condicionales y ciclos, así como el trabajo con listas y matrices. Además, hemos adquirido experiencia en el manejo de funciones, el uso de librerías y la resolución de problemas algorítmicos.
+
+En definitiva, la sopa de letras es un juego clásico que sigue siendo popular debido a su simplicidad y diversión. Mediante la creación de este programa, hemos logrado llevar este juego tradicional al mundo digital, brindando a los usuarios la posibilidad de disfrutarlo de manera interactiva y personalizada.
 
 
