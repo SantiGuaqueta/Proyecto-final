@@ -1,4 +1,5 @@
 import random
+import getpass
 titulo="SOPA DE LETRAS PROGRASAURIA" # Declaro titulo
 print(titulo.center(150)) # Con un metodo de center dejo lo mas centrado el titulo 
 # Protocolo
@@ -21,26 +22,12 @@ def Crear_Matriz(filas_A,columnas_A): # Declaro mi primera funcion la cual se ut
             fila. append(valor) # el anterior entero se adiciona a la lista vacia llamada fila que declaramos antes. 
         matriz.append(fila) # Ahora pido que la fila se adicione a la matriz vacia antes declarada.
     return(matriz) # Pido que retorne matriz
-
-if __name__ == "__main__":
-    print(f"\n{jugador1} Introduce los valores por filas para la matriz. Recuerde que la cantidad de filas es igual a la cantidad de columnas.") # Recalco que la cantidad de filas es igual a la de columnas por lo cual no podra seleccionar la cantidad de columnas solo de filas
-    # Creo la  matriz
-    print("El valor minimo de las filas es 10 y el valor maximo 30") # Recalco la aclaracion y condicion que tiene el programa
-    filas_A = int(input("Especifique el numero de filas de la primera matriz: ")) # Pido cantidad de filas
-    while filas_A < 10 or filas_A >= 30: # Un ciclo donde el programa analiza si el usuario realizo caso a la cantidad de filas min y max
-        print("Error como te comentamos antes el valor de filas debe ser minimo 10 y maximo 30") # Como no hizo caso le recalca su error
-        filas_A=int(input("Especifique el numero de filas de la primera matriz: ")) # Y pide de nuevo la cantidad de filas. El bucle se repite hasta que las filas no cumplan la condicion del while
-    columnas_A = filas_A # No doy opcion a elegir columnas en este momento digo que columnas igual a filas
-    matrizA = Crear_Matriz(filas_A,columnas_A) # Llamo a la funcion crear matriz
-    #for i in range (0,filas_A): 
-        # print(matrizA[i])  imprimo la matriz
-import getpass
 def palabras(apt1,apt2,k,posiciones,matrizA,apt,lista): # Declaro mi segunda funcion la cual se utilizara para rellenar la sopa de letras.
    
     while posiciones < k: # Realizo un bucle el cual sirve para contabilizar la cantidad de calabras que quiero agregar
         posiciones +=1 # Contador que sirve para que el bucle llegue a su fin
         apt+=1 # Contador que me servira para declarar el numero de la palabra osea cual palabra estamos agrgando ejemplo la 1 2 o 3
-        palabra=input("Escribe la palabra numero "+ str(apt)+ " a agregar: ") # Le pido al usuario la primera palabra
+        palabra=getpass.getpass("Escribe la palabra numero "+ str(apt)+ " a agregar: ") # Le pido al usuario la primera palabra
         palabra=palabra.lower() # Aplicamos metodo lower por si nos dan la palabra en mayuscula
         palabra=palabra.strip()  # Aplicamos metodo strip por si el usuario ingresa espacios al final o al inicio de la palabra
         lista.append(palabra) # Añadimos la palabra ingresada a una lista que se usara mas adelante
@@ -169,13 +156,13 @@ if __name__ == "__main__":
     # Creo la  matriz
     print("El valor minimo de las filas es 10 y el valor maximo 30") # Recalco la aclaracion y condicion que tiene el programa
     filas_A = int(input("Especifique el numero de filas de la primera matriz: ")) # Pido cantidad de filas
-    while filas_A < 10 or filas_A >= 30: # Un ciclo donde el programa analiza si el usuario realizo caso a la cantidad de filas min y max
+    while filas_A < 10 or filas_A > 30: # Un ciclo donde el programa analiza si el usuario realizo caso a la cantidad de filas min y max
         print("Error como te comentamos antes el valor de filas debe ser minimo 10 y maximo 30") # Como no hizo caso le recalca su error
         filas_A=int(input("Especifique el numero de filas de la primera matriz: ")) # Y pide de nuevo la cantidad de filas. El bucle se repite hasta que las filas no cumplan la condicion del while
     columnas_A = filas_A # No doy opcion a elegir columnas en este momento digo que columnas igual a filas
     matrizA = Crear_Matriz(filas_A,columnas_A) # Llamo a la funcion crear matriz
-    for i in range (0,filas_A): 
-        print(matrizA[i]) # imprimo la matriz
+    #for i in range (0,filas_A): 
+        #print(matrizA[i]) # imprimo la matriz
     
     # Recalco variables que utilizare
     apt = 0 
@@ -195,7 +182,7 @@ if __name__ == "__main__":
     for fila in matrizA: # Creamos un for que recorrera la matriz
         print(' '.join(fila)) # Y la imprimimos en este caso utilizamos join que nos sirve para dejar espacio entre columna y columna 
         a=fila
-    print(f"{jugador2}, {jugador1} ya realizo su sopa de letra ahora es tu turno de resolverla, las palabras que tendras que buscar son las siguientes: ") 
+    print(f"{jugador2}, {jugador1} ya realizo su sopa de letra ahora es tu turno de resolverla") 
 
 # Obtener la palabra a buscar del usuario
     for q in range(1,k+1):
