@@ -200,9 +200,99 @@ Ahora, en relación a la función en sí, se emplea un bucle while cuya condici�
 7. Después de determinar las opciones elegidas por el usuario, el programa realiza una serie de evaluaciones para determinar si la palabra puede ser agregada. Existen varios factores que pueden impedir que una palabra sea agregada, como su longitud o la posición en la que se desea colocar. El análisis específico varía según la posición elegida. En resumen, se verifica si apt (1 o 2, dependiendo de si es horizontal, vertical o diagonal), signo (positivo o negativo, dependiendo de si es normal o invertida) y la longitud de la palabra (len(palabra)) son menores que las dimensiones de la matriz (filas_A o columnas_A). Si la palabra no puede ser agregada, se muestra un mensaje indicando que no se pudo agregar y se elimina de la lista que contiene las palabras de la sopa de letras. En caso contrario, el programa pasa al siguiente paso.
 8. Se utiliza un bucle for para recorrer la cantidad de letras de la palabra. La iteración se realiza de la siguiente manera: for i in range(len(palabra)). Esto significa que i toma valores desde 0 hasta la cantidad de letras de la palabra. Luego, se accede a la matriz creada anteriormente y se le asigna la posición de fila y columna correspondiente. Dependiendo de la posición, se suma apt1 con i, apt2 con i o ambos con i. Esto se realiza para indicar en qué ubicación se colocará cada letra de la palabra. La asignación se realiza con matrizA[apt1][apt2 + i] = palabra[i], lo cual significa que la letra en la posición i de la palabra se asigna a la posición correspondiente en la matriz.
 9. Este proceso se repite hasta que se hayan agregado todas las palabras. Luego, se imprime la matriz y, finalmente, se muestra la lista de palabras que se agregaron.
-
-
+   
 [![Diagrama-sin-t-tulo-drawio-13.png](https://i.postimg.cc/nhfnZs4k/Diagrama-sin-t-tulo-drawio-13.png)](https://postimg.cc/Tp0zJ3HL)
 
+###Tercera parte 
+``` python
+def buscar_palabra(matriz, palabra):
+    # Obtener el número de filas y columnas de la matriz
+    filas = len(matriz)
+    columnas = len(matriz[0])
+    longitud = len(palabra)
+
+    # Convertir la palabra a minúsculas para una búsqueda insensible a mayúsculas
+    palabra = palabra.lower()
+
+    # Direcciones posibles: horizontal, vertical, diagonal superior y diagonal inferior
+    direcciones = [(1, 0), (0, 1), (1, 1), (1, -1)]
+
+    # Iterar sobre todas las filas de la matriz
+    for fila in range(filas):
+        # Iterar sobre todas las columnas de la matriz
+        for columna in range(columnas):
+            # Iterar sobre todas las direcciones posibles
+            for direccion in direcciones:
+                dx, dy = direccion
+                # Calcular la posición de la última letra de la palabra en la dirección actual
+                ultimo_fila = fila + (longitud - 1) * dx
+                ultimo_columna = columna + (longitud - 1) * dy
+
+                # Verificar si las coordenadas están dentro de la matriz
+                if (
+                    ultimo_fila >= 0
+                    and ultimo_fila < filas
+                    and ultimo_columna >= 0
+                    and ultimo_columna < columnas
+                ):
+                    encontrado = True
+                    # Verificar si la palabra se encuentra en la dirección actual
+                    for i in range(longitud):
+                        fila_actual = fila + i * dx
+                        columna_actual = columna + i * dy
+
+                        # Convertir la letra actual a minúsculas para una búsqueda insensible a mayúsculas
+                        letra_actual = matriz[fila_actual][columna_actual].lower()
+
+                        # Verificar si la letra actual coincide con la letra de la palabra en la misma posición
+                        if letra_actual != palabra[i]:
+                            encontrado = False
+                            break
+
+                    # Si se encontró la palabra, devolver True
+                    if encontrado:
+                        return True
+
+    palabra_usuario = input("Ingresa la palabra a buscar: ")
+
+    matriz=[] #se crea matriz vacia 
+    for fila in matrizA: #Creamos un for que recorrera la matriz inicial(matrizA)
+     matriz.append(fila) #agregamos cada fila de la matrizA a la nueva matriz
+
+    encontrada = buscar_palabra(matriz, palabra_usuario) #llamamos la funcion para buscar la palabra
+      
+    if encontrada: #creamos condicional para que imprima texto segun si encontro la palabra en la sopa
+     print("La palabra se encontró en la sopa de letras.")
+    else:
+     print("La palabra no se encontró en la sopa de letras.")
+```
+```mermaid
+graph TD;
+  A[Iniciar] --> B[Obtener tamaño de la matriz];
+  B --> C[Obtener longitud de la palabra];
+  C --> D[Convertir palabra a minúsculas];
+  D --> E[Definir direcciones posibles];
+  E --> F[Iterar sobre filas];
+  F --> G[Iterar sobre columnas];
+  G --> H[Iterar sobre direcciones];
+  H --> I[Calcular última posición de la palabra];
+  I --> J[Verificar límites de la matriz];
+  J --> K[Inicializar encontrado a verdadero];
+  K --> L[Verificar coincidencia de letras];
+  L --> M[Si todas las letras coinciden, retornar verdadero];
+  M --> N[Si se recorrieron todas las direcciones, retornar falso];
+  N --> H;
+  L --> O[Si alguna letra no coincide, continuar con la siguiente dirección];
+  O --> H;
+  J --> P[Si los límites no se cumplen, continuar con la siguiente dirección];
+  P --> H;
+  F --> Q[Si se recorrieron todas las filas, finalizar];
+  Q --> R[Avanzar a la siguiente columna];
+  R --> G;
+  B --> S[Si no se cumple el tamaño mínimo, finalizar];
+  S --> T[Retornar falso];
+  T --> U[Fin];
+```
+    
 
 
