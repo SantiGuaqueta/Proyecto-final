@@ -203,7 +203,7 @@ Ahora, en relación a la función en sí, se emplea un bucle while cuya condici�
    
 [![Diagrama-sin-t-tulo-drawio-13.png](https://i.postimg.cc/nhfnZs4k/Diagrama-sin-t-tulo-drawio-13.png)](https://postimg.cc/Tp0zJ3HL)
 
-###Tercera parte 
+### Tercera parte 
 ``` python
 def buscar_palabra(matriz, palabra):
     # Obtener el número de filas y columnas de la matriz
