@@ -253,18 +253,17 @@ def buscar_palabra(matriz, palabra):
                     if encontrado:
                         return True
 
-    palabra_usuario = input("Ingresa la palabra a buscar: ")
+  for q in range(1,k+1):
+     palabra_usuario = input("Ingresa la palabra a buscar: ")
 
-    matriz=[] #se crea matriz vacia 
-    for fila in matrizA: #Creamos un for que recorrera la matriz inicial(matrizA)
-     matriz.append(fila) #agregamos cada fila de la matrizA a la nueva matriz
-
-    encontrada = buscar_palabra(matriz, palabra_usuario) #llamamos la funcion para buscar la palabra
-      
-    if encontrada: #creamos condicional para que imprima texto segun si encontro la palabra en la sopa
-     print("La palabra se encontró en la sopa de letras.")
-    else:
-     print("La palabra no se encontró en la sopa de letras.")
+     matriz=[] #se crea matriz vacia 
+     for fila in matrizA: #Creamos un for que recorrera la matriz inicial(matrizA)
+      matriz.append(fila) #agregamos cada fila de la matrizA a la nueva matriz
+     encontrada = buscar_palabra(matriz, palabra_usuario) #llamamos la funcion para buscar la palabra
+     if encontrada: #creamos condicional para que imprima texto segun si encontro la palabra en la sopa
+      print("La palabra se encontró en la sopa de letras.")
+     else:
+      print("La palabra no se encontró en la sopa de letras.")
 ```
 Se obtiene el número de filas y columnas de la matriz utilizando las funciones len(matriz) y len(matriz[0]), también se obtiene la longitud de la palabra a buscar utilizando len(palabra). Esto es necesario para establecer los límites de búsqueda en cada dirección. luego se convierte la palabra a minúsculas utilizando palabra.lower(). Esto se hace para realizar una búsqueda insensible a mayúsculas, es decir, no importa si la palabra está escrita en mayúsculas o minúsculas en la matriz. Después, se definen las direcciones posibles: horizontal, vertical, diagonal superior y diagonal inferior. Cada dirección se representa como una tupla de dos elementos, donde el primer elemento indica el desplazamiento en las filas y el segundo elemento indica el desplazamiento en las columnas. despues se itera sobre todas las posiciones posibles en la matriz, primero, se recorren todas las filas y luego todas las columnas. Dentro de cada iteración se recorren todas las direcciones posibles y tambien dentro de cada iteración, se calcula la posición de la última letra de la palabra en la dirección actual utilizando la fórmula ``` ultimo_fila = fila + (longitud - 1) * dx y ultimo_columna = columna + (longitud - 1) * dy.``` Estos valores se utilizan para verificar si las coordenadas están dentro de los límites de la matriz. Si las coordenadas están dentro de los límites, se procede a verificar si la palabra se encuentra en la dirección actual. Se itera sobre cada letra de la palabra y se verifica si la letra actual en la matriz coincide con la letra de la palabra en la misma posición. Si en algún momento las letras no coinciden, se establece la variable encontrado como False y se interrumpe el ciclo. Si se encuentra la palabra, se devuelve True y se finaliza la función. En caso contrario, si se recorren todas las posiciones posibles en la matriz y no se encuentra la palabra, se solicita al usuario ingresar la palabra a buscar mediante input("Ingresa la palabra a buscar: "). Luego se crea una nueva matriz vacía llamada matriz y se copian todas las filas de la matriz original a esta nueva matriz. finalmente se llama a la función buscar_palabra pasando la nueva matriz y la palabra ingresada por el usuario. Si la palabra se encuentra en la sopa de letras, se imprime "La palabra se encontró en la sopa de letras.". si no, se imprime "La palabra no se encontró en la sopa de letras.".
 ```mermaid
